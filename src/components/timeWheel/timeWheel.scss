@@ -1,4 +1,6 @@
 .time-wheel {
+  --shift-deg: -45deg;
+  --deg-step: 360deg;
   position: relative;
   width: 530px;
   height: 530px;
@@ -30,78 +32,89 @@
       color: var(--pink);
     }
   }
-
   .wheel-element {
     position: absolute;
-    top: calc(50% + 265px * sin(45deg));
-    left: calc(50% + 265px * cos(45deg));
+    left: 50%;
+    top: 50%;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 265px;
+    height: 10px;
 
-    width: 50px;
-    height: 50px;
+    transform-origin: 0 50%;
+    transition: 2s;
 
-    font-size: var(--ternary-font-size);
-    text-align: center;
-    color: var(--secondary-color);
-
-    border: 1px solid var(--secondary-color);
-    border-radius: 50%;
-    background-color: var(--primary-color);
-
-    transform: translate(-50%, -50%);
-    z-index: 100;
-
-    .header {
-      content: "";
-
+    .content {
       position: absolute;
-      top: 20%;
-      left: 140%;
+      top: 50%;
+      left: 100%;
 
-      font-weight: bold;
-    }
-  }
-
-  .disabled {
-    @extend .wheel-center;
-    width: 6px;
-    height: 6px;
-
-    background-color: var(--secondary-color);
-
-    transition: 1s;
-
-    span {
-      display: none;
-    }
-
-    &::after {
-      display: none;
-    }
-
-    &:hover {
-      width: 50px;
-      height: 50px;
+      display: flex;
+      gap: 20px;
 
       font-size: var(--ternary-font-size);
-      text-align: center;
       color: var(--secondary-color);
 
-      border: 1px solid var(--secondary-color);
-      border-radius: 50%;
-      background-color: var(--primary-color);
+      transition: 2s;
+      .index {
+        width: 50px;
+        height: 50px;
 
-      transform: translate(-50%, -50%);
-      z-index: 100;
-      transition: 1s;
-      cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-      span {
-        display: block;
-        color: var(--secondary-color);
+        text-align: center;
+
+        border: 1px solid var(--secondary-color);
+        border-radius: 50%;
+        background-color: var(--primary-color);
+      }
+
+      .header {
+        position: absolute;
+
+        top: 50%;
+        left: 120%;
+
+        font-weight: bold;
+
+        transform: translate(0, -50%);
+      }
+    }
+
+    &.disabled {
+      @extend .wheel-element;
+
+      .index {
+        width: 10px;
+        height: 10px;
+        background-color: var(--secondary-color);
+
+        transition: 2s;
+        color: transparent;
+
+        &:hover {
+          width: 50px;
+          height: 50px;
+
+          background-color: var(--primary-color);
+          transition: 2s;
+          color: var(--secondary-color);
+        }
+      }
+
+      .header {
+        display: none;
+      }
+    }
+
+    @for $i from 2 to 8{
+      &:nth-child(#{$i}) {
+        transform: translate(0, -50%) rotate(calc(var(--shift-deg) + var(--deg-step) * #{$i}));
+        .content {
+          transform: translate(-50%, -50%)
+            rotate(calc(var(--shift-deg) * (-1) + var(--deg-step) * #{$i * (-1)}));
+        }
       }
     }
   }
