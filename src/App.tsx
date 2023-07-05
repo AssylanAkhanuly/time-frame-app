@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import "./App.scss";
+import ArrowButton from "./components/arrrowButton/ArrowButton";
+import Slider from "./components/swiper/Slider";
+import TimeWheel from "./components/timeWheel/TimeWheel";
+import Title from "./components/title/Title";
+import { data } from "./types/Data.type";
 function App() {
+  const [activeIndex, setActiveIndex] = useState<number>(0)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="side"></div>
+      <div className="center">
+        <Title />
+        <TimeWheel data={data} activeIndex={activeIndex} />
+        <div className="control">
+          <span>{activeIndex + 1} / {data.length}</span>
+          <div className="buttons">
+            <ArrowButton
+              disabled={false}
+              clickHandler={() => console.log("Prev")}
+              direction="left"
+              type="primary-button"
+            />
+            <ArrowButton
+              disabled={false}
+              clickHandler={() => console.log("Next")}
+              direction="right"
+              type="primary-button"
+            />
+          </div>
+        </div>
+
+        <Slider data={data[activeIndex].subData} activeIndex={activeIndex}/>
+      </div>
+      <div className="side"></div>
     </div>
   );
 }

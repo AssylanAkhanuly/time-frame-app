@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "PT Sans", sans-serif;
+}
+:root {
+  --primary-font-size: 200px;
+  --secondary-font-size: 56px;
+  --ternary-font-size: 20px;
+
+  --primary-color: #fff;
+  --secondary-color: #42567a;
+  --blue: #3877ee;
+  --iris: #5d5fef;
+  --pink: #ef5da8;
+}
+
+button {
+  outline: none;
+}
+
+.App {
+  display: flex;
+  height: 100vh;
+  background: #F4F5F9;
+
+  overflow: hidden;
+
+  .side{
+    flex: 1;
+  }
+  .center {
+    flex: 10;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+
+    border-right: 1px solid rgba($color: #42567a, $alpha: 0.2);
+    border-left: 1px solid rgba($color: #42567a, $alpha: 0.2);
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: calc(50% - 143px);
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 0.5px;
+      background-color: var(--secondary-color);
+      opacity: 0.2;
+    }
+    &::after {
+      height: 140%;
+      width: 0.5px;
+    }
+
+    .control {
+      align-self: flex-start;
+
+      padding: 20px 50px;
+
+      display: flex;
+      flex-flow: column;
+      gap: 10px;
+      
+      span {
+        font-size: var(--ternary-font-size);
+        color: var(--secondary-color);
+        text-align: center;
+      }
+      .buttons {
+        
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+    }
+  }
+}
