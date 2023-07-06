@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import "../../App";
+
 .slider {
   width: 90vw;
 position: relative;
@@ -7,15 +9,15 @@ padding: 0 60px;
   .slide {
     width: fit-content;
     span {
-      font-size: var(--ternary-font-size);
-      color: var(--blue);
+      font-size: $ternary-font-size;
+      color: $blue;
       font-weight: bold;
       font-family: 'Bebas Neue', sans-serif;
     }
     p {
         margin-top: 10px;
-      font-size: var(--ternary-font-size);
-      color: var(--secondary-color);
+      font-size: $ternary-font-size;
+      color: $secondary-color;
     }
   }
 

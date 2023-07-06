@@ -1,3 +1,5 @@
+@import "../../App";
+
 .primary-button {
   position: relative;
 
@@ -8,9 +10,9 @@
   align-items: center;
   justify-content: center;
 
-  background: rgba($color: #42567a, $alpha: 0.05);
+  background: rgba($color: $secondary-color, $alpha: 0.05);
 
-  border: 1px solid var(--secondary-color);
+  border: 1px solid $secondary-color;
   border-radius: 50%;
   cursor: pointer;
 
@@ -25,8 +27,8 @@
     height: 9px;
 
     background: transparent;
-    border-top: 3px solid var(--secondary-color);
-    border-right: 3px solid var(--secondary-color);
+    border-top: 3px solid $secondary-color;
+    border-right: 3px solid $secondary-color;
 
     transform: rotate(45deg) translate(-50%, -50%);
   }
@@ -60,9 +62,9 @@
     width: 6px;
     height: 6px;
 
-    color: var(--blue);
+    color: $blue;
 
-    border-top: 3px solid var(--blue);
-    border-right: 3px solid var(--blue);
+    border-top: 3px solid $blue;
+    border-right: 3px solid $blue;
   }
 }

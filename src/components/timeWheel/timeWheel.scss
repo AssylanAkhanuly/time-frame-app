@@ -1,3 +1,5 @@
+@import "../../App";
+
 .time-wheel {
   --shift-deg: -45deg;
   --deg-step: 360deg;
@@ -6,7 +8,25 @@
   height: 530px;
 
   border-radius: 50%;
-  border: 1px solid rgba($color: #42567a, $alpha: 0.2);
+  border: 1px solid rgba($color: $secondary-color, $alpha: 0.2);
+
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: calc(50% );
+    transform: translate(-50%, -50%);
+    width: calc(100% + 450px);
+    height: 0.5px;
+    background-color: $secondary-color;
+    opacity: 0.2;
+  }
+  &::after {
+    height: 340%;
+    width: 0.5px;
+  }
 
   .wheel-center {
     position: absolute;
@@ -20,16 +40,16 @@
     gap: 80px;
     align-items: center;
 
-    font-size: var(--primary-font-size);
+    font-size: $primary-font-size;
     font-weight: bold;
 
     transform: translate(-50%, -50%);
 
     span:nth-child(1) {
-      color: var(--blue);
+      color: $blue;
     }
     span:nth-child(2) {
-      color: var(--pink);
+      color: $pink;
     }
   }
   .wheel-element {
@@ -51,8 +71,8 @@
       display: flex;
       gap: 20px;
 
-      font-size: var(--ternary-font-size);
-      color: var(--secondary-color);
+      font-size: $ternary-font-size;
+      color: $secondary-font-size;
 
       transition: 2s;
       .index {
@@ -63,11 +83,12 @@
         align-items: center;
         justify-content: center;
 
+        font-size: $ternary-font-size;
         text-align: center;
 
-        border: 1px solid var(--secondary-color);
+        border: 1px solid $secondary-color;
         border-radius: 50%;
-        background-color: var(--primary-color);
+        background-color: $primary-color;
       }
 
       .header {
@@ -88,7 +109,7 @@
       .index {
         width: 10px;
         height: 10px;
-        background-color: var(--secondary-color);
+        background-color: $secondary-color;
 
         transition: 2s;
         color: transparent;
@@ -97,9 +118,9 @@
           width: 50px;
           height: 50px;
 
-          background-color: var(--primary-color);
+          background-color: $primary-color;
           transition: 2s;
-          color: var(--secondary-color);
+          color: $secondary-color;
         }
       }
 

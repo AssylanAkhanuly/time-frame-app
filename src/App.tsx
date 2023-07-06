@@ -25,7 +25,7 @@ function App() {
           </span>
           <div className="buttons">
             <ArrowButton
-              disabled={false}
+              disabled={activeIndex.index === 0}
               clickHandler={() =>
                 setActiveIndex(({index, iteration}) => {
                   if(index === 0) return {index, iteration};
@@ -39,10 +39,10 @@ function App() {
               type="primary-button"
             />
             <ArrowButton
-              disabled={false}
+              disabled={activeIndex.index === data.length - 1}
               clickHandler={() =>
                 setActiveIndex(({index, iteration}) => {
-                  if(index === data.length) return {index, iteration};
+                  if(index === data.length -1) return {index, iteration};
                   return {
                     index: index + 1,
                     iteration: iteration - 1,

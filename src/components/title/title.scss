@@ -1,3 +1,5 @@
+@import "../../App";
+
 .title {
     position: absolute;
     padding-left: 70px;
@@ -5,9 +7,9 @@
     top: 50px;
     left: 0;
 
-    font-size: var(--secondary-font-size);
+    font-size:$secondary-font-size;
     font-weight: bold;
-    color: var(--secondary-color);
+    color: $secondary-color;
 
     &::before {
         content: '';
@@ -17,7 +19,7 @@
         top: 0;
         height: 100%;
         width: 10px;
-        background: linear-gradient(var(--blue), var(--pink));
+        background: linear-gradient($blue, $pink);
     }
 
     

@@ -1,22 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
 
+$primary-font-size: 200px;
+$secondary-font-size: 56px;
+$ternary-font-size: 20px;
+
+$primary-color: #fff;
+$secondary-color: #42567a;
+$blue: #3877ee;
+$iris: #5d5fef;
+$pink: #ef5da8;
+
 * {
   margin: 0;
   padding: 0;
   list-style: none;
   box-sizing: border-box;
   font-family: "PT Sans", sans-serif;
-}
-:root {
-  --primary-font-size: 200px;
-  --secondary-font-size: 56px;
-  --ternary-font-size: 20px;
-
-  --primary-color: #fff;
-  --secondary-color: #42567a;
-  --blue: #3877ee;
-  --iris: #5d5fef;
-  --pink: #ef5da8;
 }
 
 button {
@@ -42,25 +41,10 @@ button {
     align-items: center;
     flex-flow: column;
 
-    border-right: 1px solid rgba($color: #42567a, $alpha: 0.2);
-    border-left: 1px solid rgba($color: #42567a, $alpha: 0.2);
+    border-right: 1px solid rgba($color: $secondary-color, $alpha: 0.2);
+    border-left: 1px solid rgba($color: $secondary-color, $alpha: 0.2);
 
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: calc(50% - 120px);
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: 0.5px;
-      background-color: var(--secondary-color);
-      opacity: 0.2;
-    }
-    &::after {
-      height: 140%;
-      width: 0.5px;
-    }
+   
 
     .control {
       align-self: flex-start;
@@ -72,8 +56,8 @@ button {
       gap: 10px;
       
       span {
-        font-size: var(--ternary-font-size);
-        color: var(--secondary-color);
+        font-size: $ternary-font-size;
+        color: $secondary-color;
         text-align: center;
       }
       .buttons {
