@@ -1,8 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
 
-$primary-font-size: 200px;
-$secondary-font-size: 56px;
-$ternary-font-size: 20px;
+:root {
+  --primary-font-size: 200px;
+  --secondary-font-size: 56px;
+  --ternary-font-size: 20px;
+
+  --primary-color: #fff;
+  --secondary-color: #42567a;
+  --blue: #3877ee;
+  --iris: #5d5fef;
+  --pink: #ef5da8;
+}
+
+$primary-font-size: var(--primary-font-size);
+$secondary-font-size: var(--secondary-font-size);
+$ternary-font-size: var(--ternary-font-size);
 
 $primary-color: #fff;
 $secondary-color: #42567a;
@@ -25,11 +37,10 @@ button {
 .App {
   display: flex;
   height: 100vh;
-  background: #F4F5F9;
+  background: #f4f5f9;
+overflow: hidden;
 
-  overflow: hidden;
-
-  .side{
+  .side {
     flex: 1;
   }
   .center {
@@ -44,28 +55,79 @@ button {
     border-right: 1px solid rgba($color: $secondary-color, $alpha: 0.2);
     border-left: 1px solid rgba($color: $secondary-color, $alpha: 0.2);
 
-   
-
     .control {
       align-self: flex-start;
-
+flex: 0.5;
       padding: 20px 50px;
 
       display: flex;
       flex-flow: column;
       gap: 10px;
-      
+
+
       span {
         font-size: $ternary-font-size;
         color: $secondary-color;
         text-align: center;
       }
-      .buttons {
-        
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-      }
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      align-self: flex-start;
+    }
+    .name {
+      flex: 0.2;
+      width: calc(100% - 40px);
+
+      margin-left: 20px;
+      padding: 20px 0;
+      font-size: $secondary-font-size;
+      font-weight: bold;
+      align-self: flex-start;
+      color: $secondary-color;
+
+      border-bottom: 1px solid rgba($color: $secondary-color, $alpha: 0.1);
     }
   }
+}
+
+@media screen and (max-width: 1080px) {
+  :root {
+    --primary-font-size: 100px;
+    --secondary-font-size: 30px;
+    --ternary-font-size: 20px;
+  }
+  .side {
+    display: none;
+  }
+
+  .control {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --primary-font-size: 56px;
+    --secondary-font-size: 20px;
+    --ternary-font-size: 15px;
+  }
+  .side {
+    display: none;
+  }
+  .control {
+    padding: 0 !important;
+  }
+
+  .footer {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+align-items: center;
+    justify-content: flex-start;
+  }
+
+  
 }
