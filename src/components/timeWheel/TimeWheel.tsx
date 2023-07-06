@@ -3,14 +3,14 @@ import { DataType } from "../../types/Data.type";
 import "./timeWheel.scss";
 import React from "react";
 import gsap from "gsap";
+import { ActiveIndexType } from "../../types/ActiveIndex.type";
 
 type TimeWheelPropsType = {
   data: DataType;
-  activeIndex: number;
-  setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
+  activeIndex: ActiveIndexType;
+  setActiveIndex: React.Dispatch<React.SetStateAction<ActiveIndexType>>;
 };
 
-let iteration = 0;
 
 function TimeWheel({ data, activeIndex, setActiveIndex }: TimeWheelPropsType) {
   const wheelStep = 360 / data.length;
@@ -23,7 +23,7 @@ function TimeWheel({ data, activeIndex, setActiveIndex }: TimeWheelPropsType) {
 
   useEffect(() => {
     gsap.to(".time-wheel", {
-      "--shift-deg": iteration * wheelStep + wheelStart + "deg",
+      "--shift-deg": activeIndex.iteration * wheelStep + wheelStart + "deg",
     });
 
     const allEl = document.getElementsByClassName("wheel-element");
@@ -32,10 +32,10 @@ function TimeWheel({ data, activeIndex, setActiveIndex }: TimeWheelPropsType) {
       el.classList.add("disabled");
     }
 
-    const currentEl = document.getElementById(activeIndex.toString());
+    const currentEl = document.getElementById(activeIndex.index.toString());
     currentEl?.classList.toggle("disabled");
     gsap.to("#end-year", {
-      innerText: data[activeIndex].endYear,
+      innerText: data[activeIndex.index].endYear,
       duration: 2,
       ease: "power3.inOut",
       snap: {
@@ -43,7 +43,7 @@ function TimeWheel({ data, activeIndex, setActiveIndex }: TimeWheelPropsType) {
       } 
     })
     gsap.to("#start-year", {
-      innerText: data[activeIndex].startYear,
+      innerText: data[activeIndex.index].startYear,
       duration: 2,
       ease: "power3.inOut",
       snap: {
@@ -62,10 +62,11 @@ function TimeWheel({ data, activeIndex, setActiveIndex }: TimeWheelPropsType) {
         <div id={i.toString()} key={i} className="wheel-element disabled">
           <div className="content">
             <button
-              onClick={() => setActiveIndex(prevActive => {
-                iteration += prevActive - i ;
-                return i
-              })}
+              onClick={() => setActiveIndex(({index, iteration}) => {
+                return {
+                  index: i,
+                  iteration: iteration + index - i,
+              }})}
               key={i}
               className="index"
             >

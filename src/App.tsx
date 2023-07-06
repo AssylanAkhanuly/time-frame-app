@@ -5,8 +5,10 @@ import Slider from "./components/swiper/Slider";
 import TimeWheel from "./components/timeWheel/TimeWheel";
 import Title from "./components/title/Title";
 import { data } from "./types/Data.type";
+import { ActiveIndexType } from "./types/ActiveIndex.type";
+
 function App() {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [activeIndex, setActiveIndex] = useState<ActiveIndexType>({ index: 0, iteration: 0 });
   return (
     <div className="App">
       <div className="side"></div>
@@ -19,27 +21,41 @@ function App() {
         />
         <div className="control">
           <span>
-            {activeIndex + 1} / {data.length}
+            {activeIndex.index + 1} / {data.length}
           </span>
           <div className="buttons">
             <ArrowButton
               disabled={false}
               clickHandler={() =>
-                setActiveIndex((prev) => (prev > 0 ? prev - 1 : prev))
+                setActiveIndex(({index, iteration}) => {
+                  if(index === 0) return {index, iteration};
+                  return {
+                    index: index - 1,
+                    iteration: iteration + 1,
+                  }
+                })
               }
               direction="left"
               type="primary-button"
             />
             <ArrowButton
               disabled={false}
-              clickHandler={() => setActiveIndex((prev) => prev < data.length ? prev + 1 : prev)}
+              clickHandler={() =>
+                setActiveIndex(({index, iteration}) => {
+                  if(index === data.length) return {index, iteration};
+                  return {
+                    index: index + 1,
+                    iteration: iteration - 1,
+                  }
+                })
+              }
               direction="right"
               type="primary-button"
             />
           </div>
         </div>
 
-        <Slider data={data[activeIndex].subData} activeIndex={activeIndex} />
+        <Slider data={data[activeIndex.index].subData} activeIndex={activeIndex} />
       </div>
       <div className="side"></div>
     </div>

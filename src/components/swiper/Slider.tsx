@@ -9,10 +9,11 @@ import SwiperCore, { Pagination } from "swiper";
 import { SubDataType } from "../../types/Data.type";
 import ArrowButton from "../arrrowButton/ArrowButton";
 import "./slider.scss";
+import { ActiveIndexType } from "../../types/ActiveIndex.type";
 
 type SliderPropsType = {
   data: SubDataType[];
-  activeIndex: number;
+  activeIndex: ActiveIndexType;
 };
 const Slider = ({ data, activeIndex }: SliderPropsType) => {
   SwiperCore.use([Pagination]);
