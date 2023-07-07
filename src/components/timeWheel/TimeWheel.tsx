@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import gsap from "gsap";
+import React, { useEffect } from "react";
+import { ActiveIndexType } from "../../types/ActiveIndex.type";
 import { DataType } from "../../types/Data.type";
 import "./timeWheel.scss";
-import React from "react";
-import gsap from "gsap";
-import { ActiveIndexType } from "../../types/ActiveIndex.type";
 
 type TimeWheelPropsType = {
   data: DataType;

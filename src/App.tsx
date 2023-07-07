@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.scss";
 import ArrowButton from "./components/arrrowButton/ArrowButton";
+import Pagination from "./components/pagination/Pagination";
 import Slider from "./components/swiper/Slider";
 import TimeWheel from "./components/timeWheel/TimeWheel";
 import Title from "./components/title/Title";
-import { data } from "./types/Data.type";
 import { ActiveIndexType } from "./types/ActiveIndex.type";
-import Pagination from "./components/pagination/Pagination";
+import { data } from "./types/Data.type";
 
 const isMobile = window.screen.width < 768;
 

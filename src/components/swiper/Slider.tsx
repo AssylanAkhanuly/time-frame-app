@@ -6,11 +6,10 @@ import "swiper/swiper.min.css";
 import { useState } from "react";
 import SwiperCore, { Pagination } from "swiper";
 
+import { ActiveIndexType } from "../../types/ActiveIndex.type";
 import { SubDataType } from "../../types/Data.type";
 import ArrowButton from "../arrrowButton/ArrowButton";
 import "./slider.scss";
-import { ActiveIndexType } from "../../types/ActiveIndex.type";
-import { isMethodSignature } from "typescript";
 
 type SliderPropsType = {
   data: SubDataType[];
